@@ -3,8 +3,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django_rest.serializers import StudentSerializer
 from django_rest.models import Student
+from rest_framework.permissions import IsAuthenticated
 
 class TestView(APIView):
+
+    permission_classes = (IsAuthenticated,)
+
     def get(self, request, *args, **kwargs):
         # this is for post request
         # data = {
