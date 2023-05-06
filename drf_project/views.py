@@ -14,7 +14,8 @@ class TestView(APIView):
 
         # this is for get request
         qs = Student.objects.all()
-        serializer = StudentSerializer(qs, many=True)
+        student1 = qs.first()
+        serializer = StudentSerializer(student1)
         return Response(serializer.data)
 
         return Response(data)
