@@ -6,10 +6,17 @@ from django_rest.models import Student
 
 class TestView(APIView):
     def get(self, request, *args, **kwargs):
-        data = {
-            'username': 'John',
-            'age': 23
-        }
+        # this is for post request
+        # data = {
+        #     'username': 'John',
+        #     'age': 23
+        # }
+
+        # this is for get request
+        qs = Student.objects.all()
+        serializer = StudentSerializer(qs, many=True)
+        return Response(serializer.data)
+
         return Response(data)
     
     def post(self, request, *args, **kwargs):
